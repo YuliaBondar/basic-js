@@ -17,8 +17,19 @@ const HALF_LIFE_PERIOD = 5730;
  * dateSample('WOOT!') => false
  *
  */
-function dateSample(/* sampleActivity */) {
-  throw new NotImplementedError('Not implemented');
+function dateSample(sampleActivity) {
+  const activity = Number(sampleActivity);
+
+  // Check if the provided sampleActivity is a valid number
+  if (isNaN(activity) || typeof sampleActivity !== 'string' || activity <= 0 || activity > MODERN_ACTIVITY) {
+    return false;
+  }
+ 
+  // Calculate the age using the formula
+  const k = 0.693 / HALF_LIFE_PERIOD; // Calculate the decay constant
+  const age = Math.ceil(Math.log(MODERN_ACTIVITY / activity) / k); // Calculate the age in years and round up
+  
+  return age;
   // remove line with error and write your code here
 }
 
