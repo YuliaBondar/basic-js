@@ -26,8 +26,6 @@ function sortByHeight(arr) {
   }
 
   return sortedHeights;
-
-  // remove line with error and write your code here
 }
 
 module.exports = {
